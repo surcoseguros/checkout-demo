@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      function openWindowWithPostRequest() {
+        var winName = 'MyWindow';
+        var winURL = 'http://localhost:3000/';
+        var params = {
+          "callback_url": "https://www.tusitio.com.ar/gracias",
+          "referral_code": "mascotas_surco",
+          "data": [
+            {
+              "plan": {
+                "id": "201"
+              },
+              "insureds": [
+                {
+                  "type": "PERSON",
+                  "name": "DENIS NAHUEL1",
+                  "lastName": "CANDIA",
+                  "email": "yo@email.com",
+                  "phone_areacode": "011",
+                  "phone_number": "26498675",
+                  "birthday": "1994-03-22T03:00:00.000Z",
+                  "vat_type": "CUIL",
+                  "vatID_number": "20380727391",
+                  "personalID_type": "DNI",
+                  "personalID_number": "38072739",
+                  "address_street": "Lavalleja",
+                  "address_number": "297",
+                  "address_floor": "7",
+                  "address_apt": "B",
+                  "address_zipcode": "1414",
+                  "address_city": "Autonoma Buenos Aires",
+                  "address_province": "CAPITAL FEDERAL"
+                },
+                {
+                  "type": "OBJECT",
+                  "species": "dog",
+                  "race": "jack rusell",
+                  "sex": "male",
+                  "colour": "white and black",
+                  "weight": "10kg",
+                  "size": "1m",
+                  "birthday": "1994-03-22T03:00:00.000Z",
+                  "name": "the dog",
+                  "particular_sign": "something",
+                  "chip_number": "0101001010100101",
+                  "description": "notes about this animal"
+                }
+              ]
+            }
+          ]
+        };
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", winURL);
+        form.setAttribute("target", winName);
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'data';
+        input.value = JSON.stringify(params);
+        form.appendChild(input);
+        document.body.appendChild(form);
+        window.open('', winName);
+        form.target = winName;
+        form.submit();
+        document.body.removeChild(form);
+      }
+
+      openWindowWithPostRequest()
+    });
+  </script>
+</body>
+
+</html>
